@@ -29,3 +29,7 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # todo-app-vue
+
+### This was implemented by following a tutorial, but I included local-storage for data persistence.
+
+### Heroku Link: https://todo-app-vue-learn.herokuapp.com/
