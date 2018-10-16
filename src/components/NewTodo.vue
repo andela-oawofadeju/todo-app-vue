@@ -12,13 +12,13 @@
           </div>
           <div class='field'>
             <label>Task</label>
-            <input v-model="taskText" type='text' ref='task' defaultValue=''>
+            <input v-model="taskText" type='text' ref='task' defaultValue="">
           </div>
           <div class='ui two button attached buttons'>
             <button class='ui basic blue button' v-on:click="sendForm()">
-              Create new task
+              Add new todo
             </button>
-            <button class='ui basic red button' v-on:click="closeForm()">
+            <button class='ui basic red button' v-on:click="closeForm">
               Cancel
             </button>
           </div>
@@ -52,9 +52,10 @@ export default {
           task,
           completed: false,
         });
-        this.newTodoText = '';
+        this.titleText = '';
+        this.taskText = '';
+        this.isCreating = false;
       }
-      this.isCreating = false;
     },
   },
 };

@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    <TodoList v-bind:todos="todos"/>
-    <NewTodo v-on:add-todo="addTodo"/>
+    <h1 class='ui dividing center header'>Todo app for learning</h1>
+    <div class='ui three column centered grid'>
+      <div class='column'>
+        <TodoList v-bind:todos="todos"/>
+        <NewTodo v-on:add-todo="addTodo"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import sweetalert from 'sweetalert';
 import TodoList from './components/TodoList';
 import NewTodo from './components/NewTodo';
 
@@ -32,12 +38,23 @@ export default {
       }],
     };
   },
+  watch: {
+    todos: {
+      handler() {
+        localStorage.todos = JSON.stringify(this.todos);
+      },
+      deep: true,
+    },
+  },
+  mounted() {
+    if (localStorage.todos) {
+      this.todos = JSON.parse(localStorage.todos);
+    }
+  },
   methods: {
-    addTodo(title) {
-      this.todos.push({
-        title,
-        completed: false,
-      });
+    addTodo(newTodo) {
+      this.todos.push(newTodo);
+      sweetalert('Success!', 'New Todo Created!', 'success');
     },
   },
 };
